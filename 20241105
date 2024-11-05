@@ -29,7 +29,7 @@ bypass-tun = 10.0.0.0/8,100.64.0.0/10,127.0.0.0/8,169.254.0.0/16,172.16.0.0/12,1
 [Proxy]
 
 [Remote Proxy]
-YY = https://api.yuyan.vin/api/v1/client/subscribe?token=9657f2cf96f1297b3773b7adc0eff089,udp=true,fast-open=default,vmess-aead=true,skip-cert-verify=true,enabled=true,flexible-sni=true
+
 
 [Remote Filter]
 游戏节点 = NameRegex, FilterKey = "^(?=.*((?i)游戏|🎮|(\b(GAME)\b)))(?!.*((?i)回国|校园)).*$"
