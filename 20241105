@@ -1,0 +1,113 @@
+# Loon 最小配置
+# Date: 2024-11-01 13:25:28
+# Author: https://t.me/iKeLee
+# 更多的插件可以前往此处安装 https://github.com/luestr/ProxyResource/blob/main/README.md
+
+[General]
+ip-mode = ipv4-only
+dns-server = system
+sni-sniffing = true
+disable-stun = false
+dns-reject-mode = LoopbackIP
+domain-reject-mode = DNS
+udp-fallback-mode = REJECT
+wifi-access-http-port = 7222
+wifi-access-socks5-port = 7221
+allow-wifi-access = false
+interface-mode = auto
+test-timeout = 5
+disconnect-on-policy-change = false
+switch-node-after-failure-times = 3
+internet-test-url = http://connectivitycheck.platform.hicloud.com/generate_204
+proxy-test-url = http://www.google.com/blank.html
+resource-parser = https://raw.githubusercontent.com/sub-store-org/Sub-Store/release/sub-store-parser.loon.min.js
+geoip-url = https://raw.githubusercontent.com/Masaiki/GeoIP2-CN/release/Country.mmdb
+ipasn-url = https://raw.githubusercontent.com/P3TERX/GeoLite.mmdb/download/GeoLite2-ASN.mmdb
+skip-proxy = 192.168.0.0/16,10.0.0.0/8,172.16.0.0/12,localhost,*.local,e.crashlynatics.com
+bypass-tun = 10.0.0.0/8,100.64.0.0/10,127.0.0.0/8,169.254.0.0/16,172.16.0.0/12,192.0.0.0/24,192.0.2.0/24,192.88.99.0/24,192.168.0.0/16,198.51.100.0/24,203.0.113.0/24,224.0.0.0/4,255.255.255.255/32
+
+[Proxy]
+
+[Remote Proxy]
+YY = https://api.yuyan.vin/api/v1/client/subscribe?token=9657f2cf96f1297b3773b7adc0eff089,udp=true,fast-open=default,vmess-aead=true,skip-cert-verify=true,enabled=true,flexible-sni=true
+
+[Remote Filter]
+游戏节点 = NameRegex, FilterKey = "^(?=.*((?i)游戏|🎮|(\b(GAME)\b)))(?!.*((?i)回国|校园)).*$"
+全球节点 = NameRegex, FilterKey = "^(?=.*(.))(?!.*((?i)群|邀请|返利|循环|官网|客服|网站|网址|获取|订阅|流量|到期|机场|下次|版本|官址|备用|过期|已用|联系|邮箱|工单|贩卖|通知|倒卖|防止|国内|地址|频道|无法|说明|使用|提示|特别|访问|支持|(\b(USE|USED|TOTAL|EXPIRE|EMAIL|Panel)\b|(\d{4}-\d{2}-\d{2}|\dG)))).*$"
+香港节点 = NameRegex, FilterKey = "^(?=.*((?i)🇭🇰|香港|(\b(HK|Hong)\b)))(?!.*((?i)回国|校园|游戏|🎮|(\b(GAME)\b))).*$"
+台湾节点 = NameRegex, FilterKey = "^(?=.*((?i)🇹🇼|台湾|(\b(TW|Tai|Taiwan)\b)))(?!.*((?i)回国|校园|游戏|🎮|(\b(GAME)\b))).*$"
+日本节点 = NameRegex, FilterKey = "^(?=.*((?i)🇯🇵|日本|川日|东京|大阪|泉日|埼玉|(\b(JP|Japan)\b)))(?!.*((?i)回国|校园|游戏|🎮|(\b(GAME)\b))).*$"
+韩国节点 = NameRegex, FilterKey = "^(?=.*((?i)🇰🇷|韩国|韓|首尔|(\b(KR|Korea)\b)))(?!.*((?i)回国|校园|游戏|🎮|(\b(GAME)\b))).*$"
+新国节点 = NameRegex, FilterKey = "^(?=.*((?i)🇸🇬|新加坡|狮|(\b(SG|Singapore)\b)))(?!.*((?i)回国|校园|游戏|🎮|(\b(GAME)\b))).*$"
+美国节点 = NameRegex, FilterKey = "^(?=.*((?i)🇺🇸|美国|波特兰|达拉斯|俄勒冈|凤凰城|费利蒙|硅谷|拉斯维加斯|洛杉矶|圣何塞|圣克拉拉|西雅图|芝加哥|(\b(US|United States)\b)))(?!.*((?i)回国|校园|游戏|🎮|(\b(GAME)\b))).*$"
+
+[Proxy Group]
+# 时延优选策略组
+香港时延优选 = url-test,香港节点,url = http://cp.cloudflare.com/generate_204,interval = 60,tolerance = 50,img-url = https://raw.githubusercontent.com/Orz-3/mini/master/Color/HK.png
+台湾时延优选 = url-test,台湾节点,url = http://cp.cloudflare.com/generate_204,interval = 60,tolerance = 50,img-url = https://raw.githubusercontent.com/Orz-3/mini/master/Color/TW.png
+日本时延优选 = url-test,日本节点,url = http://cp.cloudflare.com/generate_204,interval = 60,tolerance = 50,img-url = https://raw.githubusercontent.com/Orz-3/mini/master/Color/JP.png
+韩国时延优选 = url-test,韩国节点,url = http://cp.cloudflare.com/generate_204,interval = 60,tolerance = 50,img-url = https://raw.githubusercontent.com/Orz-3/mini/master/Color/KR.png
+新国时延优选 = url-test,新国节点,url = http://cp.cloudflare.com/generate_204,interval = 60,tolerance = 50,img-url = https://raw.githubusercontent.com/Orz-3/mini/master/Color/SG.png
+美国时延优选 = url-test,美国节点,url = http://cp.cloudflare.com/generate_204,interval = 60,tolerance = 50,img-url = https://raw.githubusercontent.com/Orz-3/mini/master/Color/US.png
+# --------------------------------
+# 手动策略组
+游戏手动 = select,游戏节点,url = http://cp.cloudflare.com/generate_204,img-url = https://raw.githubusercontent.com/Orz-3/mini/master/Color/Static.png
+全球手动 = select,全球节点,url = http://cp.cloudflare.com/generate_204,img-url = https://raw.githubusercontent.com/Orz-3/mini/master/Color/Static.png
+# --------------------------------
+# 兜底策略故障转移
+兜底后备 = fallback,香港时延优选,台湾时延优选,日本时延优选,韩国时延优选,新国时延优选,美国时延优选,url = http://cp.cloudflare.com/generate_204,interval = 60,max-timeout = 2000,img-url = https://github.com/shindgewongxj/WHATSINStash/raw/main/icon/fallback.png
+
+[Rule]
+# Local Rule
+# Type:DOMAIN-SUFFIX,DOMAIN,DOMAIN-KEYWORD,USER-AGENT,URL-REGEX,IP-CIDR,IP-CIDR6,IP-ASN
+# Strategy:DIRECT,Proxy,REJECT
+# Options:no-resolve(no-resolve(only for cidr))
+# IP-CIDR, 192.168.0.0/16, DIRECT
+# IP-CIDR, 10.0.0.0/8, DIRECT
+# IP-CIDR, 172.16.0.0/12, DIRECT
+# IP-CIDR, 127.0.0.0/8, DIRECT
+# 配置文件已自带远程GEOIP, cn, DIRECT规则，请勿在此添加
+# 请勿修改远程CN REGION规则的排序甚至删除
+FINAL,兜底后备
+
+[Remote Rule]
+https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Loon/Telegram/Telegram.list, policy=兜底后备, tag=Telegram, enabled=true
+https://kelee.one/Tool/Loon/Rule/AI.list, policy=兜底后备, tag=AI, enabled=true
+https://kelee.one/Tool/Loon/Rule/AppleID.list, policy=DIRECT, tag=Apple账户, enabled=true
+https://kelee.one/Tool/Loon/Rule/AppStore.list, policy=DIRECT, tag=App Store, enabled=false
+https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Loon/GitHub/GitHub.list, policy=兜底后备, tag=GitHub, enabled=true
+https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Loon/YouTube/YouTube.list, policy=兜底后备, tag=Youtube, enabled=true
+https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Loon/Twitter/Twitter.list, policy=兜底后备, tag=Twitter, enabled=true
+https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Loon/Facebook/Facebook.list, policy=兜底后备, tag=Facebook, enabled=true
+https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Loon/Instagram/Instagram.list, policy=兜底后备, tag=Instagram, enabled=true
+https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Loon/Google/Google.list, policy=兜底后备, tag=Google, enabled=true
+https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Loon/OneDrive/OneDrive.list, policy=兜底后备, tag=OneDrive, enabled=true
+https://kelee.one/Tool/Loon/Rule/LAN, policy=DIRECT, tag=LAN, enabled=true
+https://kelee.one/Tool/Loon/Rule/CN_REGION, policy=DIRECT, tag=CN REGION, enabled=true
+
+[Host]
+
+[Rewrite]
+
+[Script]
+
+[Plugin]
+https://kelee.one/Tool/Loon/Plugin/LoonGallery.plugin, policy=兜底后备, enabled=true
+https://kelee.one/Tool/Loon/Plugin/Block_HTTPDNS.plugin, enabled=true
+https://kelee.one/Tool/Loon/Plugin/BlockAdvertisers.plugin, enabled=true
+https://kelee.one/Tool/Loon/Plugin/Remove_ads_by_keli.plugin, enabled=true
+https://kelee.one/Tool/Loon/Plugin/QuickSearch.plugin, enabled=true
+https://kelee.one/Tool/Loon/Plugin/Prevent_DNS_Leaks.plugin, policy=兜底后备, enabled=true
+https://kelee.one/Tool/Loon/Plugin/Node_detection_tool.plugin, enabled=true
+https://kelee.one/Tool/Loon/Plugin/TestFlightRegionUnlock.plugin, policy=DIRECT, enabled=true
+https://kelee.one/Tool/Loon/Plugin/BoxJs.plugin, policy=兜底后备, enabled=true
+https://kelee.one/Tool/Loon/Plugin/Sub-Store.plugin, policy=兜底后备, enabled=true
+https://kelee.one/Tool/Loon/Plugin/Script-Hub.plugin, policy=兜底后备, enabled=true
+
+[Mitm]
+ca-p12 = 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
+ca-passphrase = SY4J57D1
+hostname =
+ca-p12 = 
+ca-passphrase = 
+skip-server-cert-verify = false
